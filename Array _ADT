@@ -6,6 +6,96 @@ class Array
     int size;
     int length;
 };
+void left_shift(class Array *arr)
+{
+    int x;
+    x = arr->A[0];
+    for (int i = 0; i < arr->length; i++)
+    {
+        
+        arr->A[i]=arr->A[i+1];
+        
+    }
+    arr->A[arr->length-1] = x;
+}
+void reverse_1(class Array *arr)
+{
+    int *b;
+    int i , j;
+    b= new int[arr->length];
+    for( i = arr->length - 1 , j=0;i>=0;i--,j++)
+    {
+        
+            b[j]=arr->A[i];
+    }
+    for(int i = 0 ;i<arr->length;i++)
+    {
+        
+            arr->A[i]=b[i];
+    }
+
+}
+void reverse_2(class Array *arr)
+{
+    int i , j;
+    int temp;
+    for ( i = 0 , j = arr->length - 1; i <= j; i++,j--)
+    {
+        temp  = arr->A[i];
+        arr->A[i]=arr->A[j];
+        arr->A[j]=temp;
+    }
+    
+}
+int min_in(class Array arr)
+{
+    int mini = arr.A[0];
+    for (int i = 0; i <arr.length; i++)
+    {
+        if (mini>arr.A[i])
+        {
+            mini=arr.A[i];
+        }
+        
+    }
+    return mini;
+    
+}
+int max_in(class Array arr)
+{
+    int maxi = arr.A[0];
+    for (int i = 0; i <arr.length; i++)
+    {
+        if (maxi<arr.A[i])
+        {
+            maxi=arr.A[i];
+        }
+        
+    }
+    return maxi;
+    
+}
+int get(class Array arr, int key)
+{
+    for (int i = 0; i < arr.length; i++)
+    {
+        if (arr.A[i]==key)
+        {
+            return i;
+        }
+        
+    }
+    return -1;
+    
+}
+void set_in(class Array *arr,int index,int key)
+{
+    if (index>=0 && index<arr->length)
+    {
+        arr->A[index]=key;
+    }
+    
+}
 int Binary_search(class Array arr, int key)
 {
     int l = 0;
@@ -87,11 +177,19 @@ void display(class Array arr)
 int main()
 {
     Array arr = {{2,3,4,5,6},10,5};
-    cout<<Delete(&arr,4)<<endl;
-    Insert(&arr,2,9);
-    Append(&arr,4);
-    cout<<Binary_search(arr, 7);
-    cout<<linear_search(&arr,4)<<endl;
+    left_shift(&arr);
+    
+    // reverse_2(&arr);
+    // reverse_1(&arr);
+    // cout<<get(arr,7)<<endl;
+    // set_in(&arr,4,0);
+    // cout<<max_in(arr);
+    // cout<<min_in(arr);
+    // cout<<Delete(&arr,4)<<endl;
+    // Insert(&arr,2,9);
+    // Append(&arr,4);
+    // cout<<Binary_search(arr, 7);
+    // cout<<linear_search(&arr,4)<<endl;
     display(arr);
     return 0 ;
 }
