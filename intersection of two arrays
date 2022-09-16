@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{//*************************intersection of two arrays************************************
+    int A[6] = {1,2,4,5,7,9};
+    int B[8] = {2,4,6,7,9,10,11,12};
+    int C[14] = {0};
+    int i = 0;
+    int k = 0;
+    int j = 0;
+    while (i<6 && j<8)
+    {
+        if(A[i]<B[j])
+            i++;
+        else if(A[i]>B[j])
+            j++;
+        else if(A[i]==B[j])
+            C[k++]=A[i++];
+                        
+    } 
+    // for (; i < 5; i++)
+    // {
+    //     C[k++] = A[i];
+    // }
+    // for (; j < 7; j++)
+    // {
+    //     C[k++] = B[j];
+    // }
+    for (int out : C)
+    {
+        cout<<out<<endl;
+    }
+    
+   return 0 ;
+}
