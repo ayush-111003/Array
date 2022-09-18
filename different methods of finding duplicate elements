@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+int T[10] = {3,6,8,8,10,10,15,15,16,20};
+int H[20] = {0};
+void duplicate_element(int n)
+{   
+   int duplicate = 0;
+   for (int i = 0; i < n; i++)
+   {
+        if(T[i]==T[i+1] && T[i]!=duplicate)
+        {    cout<<T[i]<<endl;
+            duplicate=T[i];
+        }
+   }
+  
+}
+void counting_duplicates(int n)
+{
+    int i= 0;
+    int j;
+    
+    for (; i < n; i++)
+    {
+        if(T[i]==T[i+1] )
+            {
+                j=i+1;
+                while (T[j]==T[i])j++;
+                cout<<T[i]<<" is appearing "<<j - i<<" times"<<endl;
+                i=j-1;
+            }
+    }
+    
+}
+void with_hash_table(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        H[T[i]]++;
+    }
+    for (int i = 1; i <=20; i++)
+    {
+        if(H[i]>1)
+            cout<<i<<" is appearing "<<H[i]<<" times "<<endl;
+    }
+    
+}
+int main()
+{   
+    cout<<" simple method 1 "<<endl;
+    duplicate_element(10);
+    cout<<" method 2 use of while "<<endl;
+    counting_duplicates(10);
+    cout<<" use of hash table "<<endl;
+    with_hash_table(10);
+    return 0 ;
+}
